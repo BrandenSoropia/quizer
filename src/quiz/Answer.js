@@ -10,10 +10,9 @@ const renderOptionNumberIfGiven = (optionNumber) => {
  * Display answer text and activate handler on user's answer selection.
  */
 const Answer = (answerData, handler) => {
-  const {optionNumber, text, isAnswer} = answerData;
+  const {optionNumber, text, is_correct: isAnswer} = answerData;
   return (
     <div className="Answer" key={`Answer-${optionNumber}`}>
-      {renderOptionNumberIfGiven(optionNumber)}
       <button onClick={() => handler(isAnswer)}>{text}</button>
     </div>
   )
