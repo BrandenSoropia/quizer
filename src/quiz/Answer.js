@@ -1,29 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Return element displaying option number, if given one.
-const renderOptionNumberIfGiven = (optionNumber) => {
-  return optionNumber ? <span>{optionNumber.toString()}</span> : null;
-};
-
-/**
- * Display answer text and activate handler on user's answer selection.
- */
-const Answer = (answerData, handler) => {
-  const {optionNumber, text, is_correct: isAnswer} = answerData;
+const Answer = props => {
+  const { text, handleClick } = props
   return (
-    <div className="Answer" key={`Answer-${optionNumber}`}>
-      <button onClick={() => handler(isAnswer)}>{text}</button>
+    <div className='Answer' onClick={handleClick}>
+      <span>{text}</span>
     </div>
   )
-};
+}
 
 Answer.propTypes = {
-  answerData: PropTypes.shape({
-    optionNumber: PropTypes.number,
-    text: PropTypes.string,
-    isAnswer: PropTypes.bool
-  }).isRequired
-};
+  text: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired
+}
 
 export default Answer;

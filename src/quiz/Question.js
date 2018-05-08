@@ -1,19 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import Answer from './answer';
 
-/**
- * Display question given text.
- */
-const Question = (question) => {
+const Question = props => {
+  const { text, answers , onAnswerClick } = props;
+
   return (
-    <div className="Question">
-      <h2>{question}</h2>
+    <div className='Question'>
+      <h2>{text}</h2>
+      {answers.map(answer => (
+        <Answer
+          text={answer.text}
+          handleClick={() => onAnswerClick(answer.isCorrect)}
+        />
+      ))}
     </div>
   )
-};
+}
 
 Question.propTypes = {
-  question: PropTypes.string
-};
+  text: PropTypes.string.isRequired,
+  answer: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  onAnswerClick: PropTypes.func.isRequired
+}
 
 export default Question;

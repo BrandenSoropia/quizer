@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 
 // TODO: Read from env to get prod url
-const baseURL = 'http://localhost:3000';
+const baseURL = 'http://localhost:3001';
 
 const api = {
   // Return promise passing response value
