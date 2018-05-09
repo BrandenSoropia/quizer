@@ -20,9 +20,8 @@ const api = {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(params)
-      })
-      .then(response => response.json())
-      .catch(err => err);
+      }
+    ).then(response => response.json())
   }
 };
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Answer from './answer';
 
 const Question = props => {
-  const { text, answers , onAnswerClick } = props;
+  const { text, answers, onAnswerClick } = props;
 
   return (
     <div className='Question'>
@@ -11,7 +11,7 @@ const Question = props => {
       {answers.map(answer => (
         <Answer
           text={answer.text}
-          handleClick={() => onAnswerClick(answer.isCorrect)}
+          handleClick={() => onAnswerClick(answer.is_correct)}
         />
       ))}
     </div>
