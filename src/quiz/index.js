@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Question from './question';
-import getCurrentActiveQuiz from '../services/get-quiz';
+import React, { Component } from "react";
+import Question from "./Question";
+import getCurrentActiveQuiz from "../services/get-quiz";
 
 class Quiz extends Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class Quiz extends Component {
 
     this.state = {
       quiz: null
-    }
+    };
 
     this.onAnswerClick = this.onAnswerClick.bind(this);
   }
@@ -18,26 +18,25 @@ class Quiz extends Component {
       current_date: new Date()
     };
 
-    getCurrentActiveQuiz(params)
-      .then(quiz => {
-        this.setState((prevState) => {
-          return { quiz };
-        });
-      })
+    getCurrentActiveQuiz(params).then(quiz => {
+      this.setState(prevState => {
+        return { quiz };
+      });
+    });
   }
 
   // TODO: Handle answer
   onAnswerClick(isCorrect) {
-    console.log(isCorrect)
+    console.log(isCorrect);
   }
 
   render() {
     const { quiz } = this.state;
 
-    if (!quiz) return null
+    if (!quiz) return null;
 
     return (
-      <div className='Quiz'>
+      <div className="Quiz">
         {quiz.questions.map(question => {
           return (
             <Question
@@ -45,16 +44,15 @@ class Quiz extends Component {
               answers={question.answers}
               onAnswerClick={this.onAnswerClick}
             />
-          )
-        })
-        }
+          );
+        })}
       </div>
-    )
+    );
   }
 }
 
 Quiz.propTypes = {
   // TODO: proptypes
-}
+};
 
 export default Quiz;
