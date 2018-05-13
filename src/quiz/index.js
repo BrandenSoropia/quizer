@@ -1,28 +1,17 @@
 import React, { Component } from "react";
-import Question from "./Question";
-import getCurrentActiveQuiz from "../services/get-quiz";
+import PropTypes from "prop-types";
+import Question from "./question";
+import _ from "lodash";
 
 class Quiz extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      quiz: null
+      currentQuestion: 0
     };
 
     this.onAnswerClick = this.onAnswerClick.bind(this);
-  }
-
-  componentDidMount() {
-    const params = {
-      current_date: new Date()
-    };
-
-    getCurrentActiveQuiz(params).then(quiz => {
-      this.setState(prevState => {
-        return { quiz };
-      });
-    });
   }
 
   // TODO: Handle answer
@@ -31,28 +20,37 @@ class Quiz extends Component {
   }
 
   render() {
-    const { quiz } = this.state;
+    const { currentQuestion } = this.state;
+    const { questions } = this.props;
 
-    if (!quiz) return null;
+    if (_.isEmpty(questions)) return null;
 
     return (
       <div className="Quiz">
-        {quiz.questions.map(question => {
-          return (
-            <Question
-              text={question.text}
-              answers={question.answers}
-              onAnswerClick={this.onAnswerClick}
-            />
-          );
-        })}
+        {
+          <Question
+            text={questions[currentQuestion].text}
+            answers={questions[currentQuestion].answers}
+            onAnswerClick={this.onAnswerClick}
+          />
+        }
       </div>
     );
   }
 }
 
 Quiz.propTypes = {
-  // TODO: proptypes
+  questions: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      answers: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string,
+          isCorrect: PropTypes.bool
+        })
+      )
+    })
+  ).isRequired
 };
 
 export default Quiz;
