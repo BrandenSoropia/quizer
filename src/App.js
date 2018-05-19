@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Quiz from "./quiz";
+import Quiz from "./quiz/quiz.hoc";
 import services from "./services";
 
 class App extends Component {
