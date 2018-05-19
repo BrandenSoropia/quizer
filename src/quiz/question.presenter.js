@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Answer from "./answer.presenter";
 
+// Images
+import LettuceShrug from '../static/lettuce_shrug.png';
+import LettuceRightAnswer from '../static/lettuce_right_answer.png';
+import LettuceWrongAnswer from '../static/lettuce_wrong_answer.png';
+
 class Question extends Component {
   constructor(props) {
     super(props);
@@ -40,12 +45,12 @@ class Question extends Component {
 
   handleCorrectAnswerClicked() {
     this.setState({ correctAnswerSelected: true });
-    // TODO: Disable answer buttons, display happy mascot, correct answer message, next question button
+    // TODO: display happy mascot
     this.disableAnswersButtons();
   }
 
   handleIncorrectAnswerClicked() {
-    // TODO: Disable answer buttons, display sad mascot, incorrect answer message, correct answer promtp, highlight correct, next question button
+    // TODO: display sad mascot
     this.disableAnswersButtons();
   }
 
@@ -58,14 +63,14 @@ class Question extends Component {
         {disableAnswers && (
           <React.Fragment>
           <h2>{correctAnswerSelected ? 'Yes!' : 'Nice guess!'}</h2>
-          <img />
+          <img src={correctAnswerSelected ? LettuceRightAnswer : LettuceWrongAnswer} />
           <h2>{correctAnswerSelected ? null : 'Here is the right answer:'}</h2>
         </React.Fragment>
         )}
         {!disableAnswers && (
           <React.Fragment>
             <h2>{`Question ${quizProgress.currentQuestion} out of ${quizProgress.totalQuestions}`}</h2>
-            <img />
+            <img src={LettuceShrug} />
             <h2>{text}</h2>
           </React.Fragment>
         )}

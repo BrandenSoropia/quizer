@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Question from "./question.presenter";
 import _ from "lodash";
-import { consolidateStreamedStyles } from "styled-components";
 
 class Quiz extends Component {
   constructor(props) {
