@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Answer from "./answer.presenter";
+import Answer from "./answer";
 
 // Images
 import LettuceShrug from '../static/lettuce_shrug.png';
@@ -13,7 +13,7 @@ class Question extends Component {
 
     this.state = {
       disableAnswers: false,
-      correctAnswerSelected: false
+      correctAnswerSelected: false,
     };
 
     this.handleCorrectAnswerClicked = this.handleCorrectAnswerClicked.bind(this);

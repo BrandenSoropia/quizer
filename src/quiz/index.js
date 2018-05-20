@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Question from "./question.presenter";
+import Question from "./question";
 import _ from "lodash";
 
 class Quiz extends Component {
