@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Question from "./question";
+import LoginForm from "./login"
 import _ from "lodash";
 
 class Quiz extends Component {
@@ -43,7 +44,9 @@ class Quiz extends Component {
             answers={questions[currentQuestion].answers}
             onNextQuestionClick={this.goToNextQuestion}
           />
+
         }
+        <LoginForm/>
       </div>
     );
   }
