@@ -1,16 +1,29 @@
-import React, { Component } from "react";
-import "./App.css";
-import Quiz from "./quiz";
-import services from "./services";
+import React, { Component } from 'react';
+import './App.css';
+import Quiz from './quiz';
+import services from './services';
+import LoginForm from './login';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      userId: '',
       questions: [],
       error: {}
     };
+
+    this.setUserId = this.setUserId.bind(this);
+    this.isLoggedIn = this.isLoggedIn.bind(this);
+  }
+
+  isLoggedIn() {
+    return this.state.userId !== '';
+  }
+
+  setUserId(userId) {
+    this.setState({ userId });
   }
 
   componentDidMount() {
@@ -34,7 +47,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Quiz questions={this.state.questions} />
+        {this.isLoggedIn() ? (
+          <Quiz questions={this.state.questions} />
+        ) : (
+          <LoginForm setUserId={this.setUserId} />
+        )}
       </div>
     );
   }

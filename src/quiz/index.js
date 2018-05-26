@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Question from "./question";
-import LoginForm from "./login"
-import _ from "lodash";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Question from './question';
+import _ from 'lodash';
 
 class Quiz extends Component {
   constructor(props) {
@@ -16,13 +15,15 @@ class Quiz extends Component {
   }
 
   goToNextQuestion() {
-    if ((this.state.currentQuestion + 1) >= this.props.questions.length) { // Quiz complete
+    if (this.state.currentQuestion + 1 >= this.props.questions.length) {
+      // Quiz complete
       // TODO: Report quiz is completed
-      console.log('quiz complete!')
-    } else { // Move on to next question
-      this.setState((prevState) => ({
+      console.log('quiz complete!');
+    } else {
+      // Move on to next question
+      this.setState(prevState => ({
         currentQuestion: prevState.currentQuestion + 1
-      }))
+      }));
     }
   }
 
@@ -44,9 +45,7 @@ class Quiz extends Component {
             answers={questions[currentQuestion].answers}
             onNextQuestionClick={this.goToNextQuestion}
           />
-
         }
-        <LoginForm/>
       </div>
     );
   }
