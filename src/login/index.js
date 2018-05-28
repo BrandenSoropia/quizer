@@ -21,7 +21,7 @@ class LoginForm extends Component {
     const { setUserId } = this.props;
 
     axios
-      .post(`${process.env.API_URL}/users/login`, { login_key })
+      .post(process.env.API_URL + '/users/login', { login_key })
       .then(response => {
         if (response.data.length === 0) {
           console.log('invalid username');
