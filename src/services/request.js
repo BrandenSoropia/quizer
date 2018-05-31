@@ -1,7 +1,5 @@
-import "whatwg-fetch";
-
-// TODO: Read from env to get prod url
-const baseURL = "http://localhost:3001";
+import 'whatwg-fetch';
+const baseURL = process.env.API_URL;
 
 const request = {
   // Return promise passing response value
@@ -13,9 +11,9 @@ const request = {
 
   post: (endpoint, params) => {
     return fetch(baseURL + endpoint, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(params)
     }).then(response => response.json());
