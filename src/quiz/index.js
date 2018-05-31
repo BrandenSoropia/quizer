@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Question from './question';
-import Welcome from './welcome';
 import _ from 'lodash';
 
 import Carrot from '../static/carrot-welcome.png';
@@ -62,8 +61,8 @@ class Quiz extends Component {
                                          : (<div>
                                          Welcome to {name} of our 12 week Learn-&-Earn journey, reducing food waste
                                          from field to fork. Try all of our quizzes and win an opportunity to earn
-                                         $50 President's Choice gift card. Learn more by following the link at the end
-                                         of today's {questions.length} questions.<p/>
+                                         $50 President&apos;s Choice gift card. Learn more by following the link at the end
+                                         of today&apos;s {questions.length} questions.<p/>
                                          <button onClick={this.onBeginClick}>{'Begin'}</button><br/>
                                          <img src={Carrot} />
                                          <img src={CarrotFlipped} />
