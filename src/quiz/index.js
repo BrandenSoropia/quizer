@@ -41,7 +41,7 @@ class Quiz extends Component {
 
   render() {
     const { currentQuestion } = this.state;
-    const { name, questions } = this.props;
+    const { name, desc, img, questions } = this.props;
 
     if (_.isEmpty(questions)) return null;
 
@@ -63,6 +63,9 @@ class Quiz extends Component {
                                          from field to fork. Try all of our quizzes and win an opportunity to earn
                                          $50 President&apos;s Choice gift card. Learn more by following the link at the end
                                          of today&apos;s {questions.length} questions.<p/>
+                                         {desc.split('.')[0]}<p/>{desc.split('.')[1]}.<p/>
+                                         <img src={require(`../static/${img}`)} />
+                                         <p/>
                                          <button onClick={this.onBeginClick}>{'Begin'}</button><br/>
                                          <img src={Carrot} />
                                          <img src={CarrotFlipped} />

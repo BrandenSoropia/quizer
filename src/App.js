@@ -11,7 +11,10 @@ class App extends Component {
     this.state = {
       userId: '',
       questions: [],
-      error: {}
+      error: {},
+      name: '',
+      desc: '',
+      img: ''
     };
 
     this.setUserId = this.setUserId.bind(this);
@@ -48,7 +51,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.isLoggedIn() ? (
-          <Quiz questions={this.state.questions} />
+          <Quiz name={this.state.name} desc={this.state.desc} img={this.state.img} questions={this.state.questions} />
         ) : (
           <LoginForm setUserId={this.setUserId} />
         )}
