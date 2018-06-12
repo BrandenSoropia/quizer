@@ -51,7 +51,12 @@ class App extends Component {
     return (
       <div className="App">
         {this.isLoggedIn() ? (
-          <Quiz name={this.state.name} desc={this.state.desc} img={this.state.img} questions={this.state.questions} />
+          <Quiz
+            name={this.state.name}
+            desc={this.state.desc}
+            // img={this.state.img}
+            questions={this.state.questions}
+          />
         ) : (
           <LoginForm setUserId={this.setUserId} />
         )}

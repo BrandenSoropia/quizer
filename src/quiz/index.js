@@ -21,9 +21,9 @@ class Quiz extends Component {
     console.log(this.props.start_date);
   }
 
-  onBeginClick(){
+  onBeginClick() {
     this.setState({
-        showQuiz: true
+      showQuiz: true
     });
   }
   goToNextQuestion() {
@@ -47,30 +47,35 @@ class Quiz extends Component {
 
     return (
       <React.Fragment>
-
-        {this.state.showQuiz ? (<Question
-                                           quizProgress={{
-                                             currentQuestion: currentQuestion + 1,
-                                             totalQuestions: questions.length
-                                           }}
-                                           explanation={questions[currentQuestion].explanation}
-                                           text={questions[currentQuestion].text}
-                                           answers={questions[currentQuestion].answers}
-                                           onNextQuestionClick={this.goToNextQuestion}
-                                         />)
-                                         : (<div>
-                                         Welcome to {name} of our 12 week Learn-&-Earn journey, reducing food waste
-                                         from field to fork. Try all of our quizzes and win an opportunity to earn
-                                         $50 President&apos;s Choice gift card. Learn more by following the link at the end
-                                         of today&apos;s {questions.length} questions.<p/>
-                                         {desc.split('.')[0]}<p/>{desc.split('.')[1]}.<p/>
-                                         <img src={require(`../static/${img}`)} />
-                                         <p/>
-                                         <button onClick={this.onBeginClick}>{'Begin'}</button><br/>
-                                         <img src={Carrot} />
-                                         <img src={CarrotFlipped} />
-                                         </div>)}
-
+        {this.state.showQuiz ? (
+          <Question
+            quizProgress={{
+              currentQuestion: currentQuestion + 1,
+              totalQuestions: questions.length
+            }}
+            explanation={questions[currentQuestion].explanation}
+            text={questions[currentQuestion].text}
+            answers={questions[currentQuestion].answers}
+            onNextQuestionClick={this.goToNextQuestion}
+          />
+        ) : (
+          <div>
+            Welcome to {name} of our 12 week Learn-&-Earn journey, reducing food
+            waste from field to fork. Try all of our quizzes and win an
+            opportunity to earn $50 President&apos;s Choice gift card. Learn
+            more by following the link at the end of today&apos;s{' '}
+            {questions.length} questions.<p />
+            {desc.split('.')[0]}
+            <p />
+            {desc.split('.')[1]}.<p />
+            {/* <img src={require(`../static/${img}`)} /> */}
+            <p />
+            <button onClick={this.onBeginClick}>{'Begin'}</button>
+            <br />
+            <img src={Carrot} />
+            <img src={CarrotFlipped} />
+          </div>
+        )}
       </React.Fragment>
     );
   }
