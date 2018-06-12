@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 
-const baseURL = process.env.API_URL;
+const baseURL = process.env.REACT_APP_API_URL;
 
 const request = {
   // Return promise passing response value
