@@ -7,7 +7,7 @@
   },
   "proxies": {
     "/api/": {
-      "origin": "${process.env.API_URL}"
+      "origin": "https://food-waste-backend.herokuapp.com/"
     }
   }
 }
