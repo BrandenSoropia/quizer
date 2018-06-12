@@ -1,7 +1,9 @@
-import getCurrentActiveQuiz from "./get-quiz";
+import getCurrentActiveQuiz from './get-quiz';
+import login from './login';
 
 const services = {
-  getCurrentActiveQuiz
+  getCurrentActiveQuiz,
+  login
 };
 
 export default services;

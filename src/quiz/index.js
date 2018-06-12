@@ -18,7 +18,6 @@ class Quiz extends Component {
     this.onBeginClick = this.onBeginClick.bind(this);
 
     this.goToNextQuestion = this.goToNextQuestion.bind(this);
-    console.log(this.props.start_date);
   }
 
   onBeginClick() {

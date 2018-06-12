@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import services from '../services';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -20,17 +20,14 @@ class LoginForm extends Component {
     const { login_key } = this.state;
     const { setUserId } = this.props;
 
-    axios
-      .post('http://localhost:3001/users/login', { login_key })
-      .then(response => {
-        if (response.data.length === 0) {
-          console.log('invalid username');
-        } else {
-          console.log('valid username');
-          setUserId(response.data[0]._id);
-        }
+    services
+      .login(login_key)
+      .then(id => {
+        if (!id) return;
+        setUserId(id);
       })
-      .catch(function(error) {
+      .catch(error => {
+        alert('Sorry, we had trouble logging you in.');
         console.log(error);
       });
   }
