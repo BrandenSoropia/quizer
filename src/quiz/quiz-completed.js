@@ -1,6 +1,5 @@
 import React from 'react';
 import CarrotWelcome from '../static/carrot-welcome-flipped.png';
-import services from '../services';
 
 const QuizCompleted = ({ markUserQuizCompleted }) => (
   <div className="QuizCompleted">

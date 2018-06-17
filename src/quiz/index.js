@@ -26,7 +26,7 @@ class Quiz extends Component {
     });
   }
   goToNextQuestion() {
-    const { setQuizCompleted, questions } = this.props;
+    const { questions } = this.props;
 
     // Move on to next question
     this.setState(prevState => ({
@@ -70,8 +70,11 @@ class Quiz extends Component {
             <p />
             <button onClick={this.onBeginClick}>{'Begin'}</button>
             <br />
-            <img src={Carrot} />
-            <img src={CarrotFlipped} />
+            <img src={Carrot} alt="Cartoon carrot waving with left hand." />
+            <img
+              src={CarrotFlipped}
+              alt="Cartoon carrot waving with right hand."
+            />
           </div>
         )}
       </div>
