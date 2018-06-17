@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Answer from "./answer";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Answer from './answer';
 
 // Images
 import LettuceShrug from '../static/lettuce_shrug.png';
@@ -13,11 +13,15 @@ class Question extends Component {
 
     this.state = {
       disableAnswers: false,
-      correctAnswerSelected: false,
+      correctAnswerSelected: false
     };
 
-    this.handleCorrectAnswerClicked = this.handleCorrectAnswerClicked.bind(this);
-    this.handleIncorrectAnswerClicked = this.handleIncorrectAnswerClicked.bind(this);
+    this.handleCorrectAnswerClicked = this.handleCorrectAnswerClicked.bind(
+      this
+    );
+    this.handleIncorrectAnswerClicked = this.handleIncorrectAnswerClicked.bind(
+      this
+    );
     this.disableAnswersButtons = this.disableAnswersButtons.bind(this);
     this.handleAnswerClicked = this.handleAnswerClicked.bind(this);
   }
@@ -25,11 +29,11 @@ class Question extends Component {
   // Reset state
   componentDidUpdate(prevProps, prevState) {
     if (prevState.disableAnswers)
-      this.setState({ 
+      this.setState({
         disableAnswers: false,
         correctAnswerSelected: false
       });
-    }
+  }
 
   disableAnswersButtons() {
     this.setState({ disableAnswers: true });
@@ -56,20 +60,35 @@ class Question extends Component {
 
   render() {
     const { disableAnswers, correctAnswerSelected } = this.state;
-    const { text, answers, onNextQuestionClick, quizProgress } = this.props;
+    const {
+      text,
+      answers,
+      onNextQuestionClick,
+      quizProgress,
+      isLastQuestion,
+      setQuizCompleted
+    } = this.props;
 
     return (
       <div className="Question">
         {disableAnswers && (
           <React.Fragment>
-          <h2>{correctAnswerSelected ? 'Yes!' : 'Nice guess!'}</h2>
-          <img src={correctAnswerSelected ? LettuceRightAnswer : LettuceWrongAnswer} />
-          <h2>{correctAnswerSelected ? null : 'Here is the right answer:'}</h2>
-        </React.Fragment>
+            <h2>{correctAnswerSelected ? 'Yes!' : 'Nice guess!'}</h2>
+            <img
+              src={
+                correctAnswerSelected ? LettuceRightAnswer : LettuceWrongAnswer
+              }
+            />
+            <h2>
+              {correctAnswerSelected ? null : 'Here is the right answer:'}
+            </h2>
+          </React.Fragment>
         )}
         {!disableAnswers && (
           <React.Fragment>
-            <h2>{`Question ${quizProgress.currentQuestion} out of ${quizProgress.totalQuestions}`}</h2>
+            <h2>{`Question ${quizProgress.currentQuestion} out of ${
+              quizProgress.totalQuestions
+            }`}</h2>
             <img src={LettuceShrug} />
             <h2>{text}</h2>
           </React.Fragment>
@@ -80,20 +99,23 @@ class Question extends Component {
             text={answer.text}
             isCorrect={answer.isCorrect}
             isDisabled={disableAnswers}
-            handleAnswerClicked={() => this.handleAnswerClicked(answer.isCorrect)}
+            handleAnswerClicked={() =>
+              this.handleAnswerClicked(answer.isCorrect)
+            }
           />
         ))}
-        {disableAnswers && (
-          <button
-            onClick={onNextQuestionClick}
-          >
-            {'Next Question'}
-          </button>
-        )}
+        {disableAnswers &&
+          !isLastQuestion && (
+            <button onClick={onNextQuestionClick}>{'Next Question'}</button>
+          )}
+        {disableAnswers &&
+          isLastQuestion && (
+            <button onClick={setQuizCompleted}>{'Done!'}</button>
+          )}
       </div>
     );
   }
-};
+}
 
 Question.propTypes = {
   text: PropTypes.string.isRequired,

@@ -12,11 +12,11 @@ class Quiz extends Component {
 
     this.state = {
       currentQuestion: 0,
-      showQuiz: false
+      showQuiz: false,
+      isLastQuestion: false
     };
 
     this.onBeginClick = this.onBeginClick.bind(this);
-
     this.goToNextQuestion = this.goToNextQuestion.bind(this);
   }
 
@@ -26,26 +26,23 @@ class Quiz extends Component {
     });
   }
   goToNextQuestion() {
-    if (this.state.currentQuestion + 1 >= this.props.questions.length) {
-      // Quiz complete
-      // TODO: Report quiz is completed
-      console.log('quiz complete!');
-    } else {
-      // Move on to next question
-      this.setState(prevState => ({
-        currentQuestion: prevState.currentQuestion + 1
-      }));
-    }
+    const { setQuizCompleted, questions } = this.props;
+
+    // Move on to next question
+    this.setState(prevState => ({
+      currentQuestion: prevState.currentQuestion + 1,
+      isLastQuestion: prevState.currentQuestion + 1 === questions.length - 1
+    }));
   }
 
   render() {
-    const { currentQuestion } = this.state;
-    const { name, desc, img, questions } = this.props;
+    const { currentQuestion, isLastQuestion } = this.state;
+    const { name, desc, img, questions, setQuizCompleted } = this.props;
 
     if (_.isEmpty(questions)) return null;
 
     return (
-      <React.Fragment>
+      <div className="QuizContainer">
         {this.state.showQuiz ? (
           <Question
             quizProgress={{
@@ -56,6 +53,8 @@ class Quiz extends Component {
             text={questions[currentQuestion].text}
             answers={questions[currentQuestion].answers}
             onNextQuestionClick={this.goToNextQuestion}
+            isLastQuestion={isLastQuestion}
+            setQuizCompleted={setQuizCompleted}
           />
         ) : (
           <div>
@@ -75,7 +74,7 @@ class Quiz extends Component {
             <img src={CarrotFlipped} />
           </div>
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }
