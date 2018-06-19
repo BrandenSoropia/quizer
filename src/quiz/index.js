@@ -58,14 +58,16 @@ class Quiz extends Component {
           />
         ) : (
           <div>
-            Welcome to {name} of our 12 week Learn-&-Earn journey, reducing food
-            waste from field to fork. Try all of our quizzes and win an
-            opportunity to earn $50 President&apos;s Choice gift card. Learn
-            more by following the link at the end of today&apos;s{' '}
-            {questions.length} questions.<p />
-            {desc.split('.')[0]}
-            <p />
-            {desc.split('.')[1]}.<p />
+            <p class="desc">
+                Welcome to {name} of our 12 week Learn-&-Earn journey, reducing food
+                waste from field to fork. Try all of our quizzes and win an
+                opportunity to earn $50 President&apos;s Choice gift card. Learn
+                more by following the link at the end of today&apos;s{' '}
+                {questions.length} questions.<p />
+                {desc.split('.')[0]}<p />
+                {desc.split('.')[1]}.<p />
+
+            </p>
             {/* <img src={require(`../static/${img}`)} /> */}
             <p />
             <button onClick={this.onBeginClick}>{'Begin'}</button>
